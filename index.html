@@ -401,6 +401,9 @@
 <!-- Include Chart.js for the performance chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+  document.getElementById('applyForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+    
     // Display job details in modal after clicking Apply
     function showJobDetails() {
       const jobDetails = `
@@ -424,10 +427,6 @@
       const loginForm = document.getElementById('loginForm');
       loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
     }
-
-// Handle apply button click
-document.getElementById('applyForm').addEventListener('submit', function(event) {
-  event.preventDefault();
 
   // Fetch the UPI payment details from the JSON file
   fetch('upi.json')
