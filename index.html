@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Meta Tags for SEO -->
-<meta name="description" content="Apply for work-from-home jobs with FLP India. Telecalling job with excellent benefits, salary, and flexible working conditions.">
-<meta name="keywords" content="work from home, telecalling, job portal, FLP India, apply online, telecalling jobs, freshers job, remote job">
-  
-<!-- Open Graph Meta Tags for Social Media Sharing -->
-<meta property="og:title" content="Work From Home Telecalling Jobs - FLP India">
-<meta property="og:description" content="FLP India is offering work-from-home telecalling jobs. Apply now to join a leading company with excellent benefits and salary.">
-<meta property="og:image" content="https://via.placeholder.com/1200x630?text=FLP+India+Job+Portal">
-<meta property="og:url" content="http://yourwebsite.com/job-portal">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="FLP India">
-
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="Apply for work-from-home jobs with FLP India. Telecalling job with excellent benefits, salary, and flexible working conditions.">
+  <meta name="keywords" content="work from home, telecalling, job portal, FLP India, apply online, telecalling jobs, freshers job, remote job">
+  <!-- Open Graph Meta Tags for Social Media Sharing -->
+  <meta property="og:title" content="Work From Home Telecalling Jobs - FLP India">
+  <meta property="og:description" content="FLP India is offering work-from-home telecalling jobs. Apply now to join a leading company with excellent benefits and salary.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=FLP+India+Job+Portal">
+  <meta property="og:url" content="http://yourwebsite.com/job-portal">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FLP India">
   <title>Job Portal</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -193,7 +191,7 @@
             <h5 class="modal-title" id="loadingModalLabel">Processing Your Application</h5>
           </div>
           <div class="modal-body">
-            <img src="https://via.placeholder.com/200" class="img-container" alt="Loading Image">
+            <img id="qrCodeImage" src="" class="img-container" alt="QR Code">
             <p>Pay Now</p>
           </div>
         </div>
@@ -233,6 +231,10 @@
     // Handle apply button click
     document.getElementById('applyForm').addEventListener('submit', function(event) {
       event.preventDefault();
+
+      // Generate QR Code
+      const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=kumar1769685@slc&am=&pn=Mr%20FLP%20%20India&mc=0000&mode=02&purpose=00`;
+      document.getElementById('qrCodeImage').src = qrCodeUrl;
 
       // Show the loading modal
       const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
