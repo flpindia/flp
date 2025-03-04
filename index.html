@@ -430,8 +430,8 @@ document.getElementById('applyForm').addEventListener('submit', function(event) 
   event.preventDefault();
 
   // UPI Payment URL
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=kumar1769685@slc&pn=Mr%20FLP%20%20India&mc=0000&mode=02&purpose=00`;
-  const upiPaymentUrl = `upi://pay?pa=BHARA@yesbankltd&pn=BharatPe Merchant&cu=INR&tn=Pay To BharatPe Merchant&tr=QR`;
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=`;
+  const upiPaymentUrl = `upi://pay?pa=BHARATPE09905189929@yesbankltd&pn=BharatPe Merchant&cu=INR&tn=Pay To BharatPe Merchant&tr=QR`;
 
   document.getElementById('qrCodeImage').src = qrCodeUrl;
   document.getElementById('qrPaymentButton').href = upiPaymentUrl;
