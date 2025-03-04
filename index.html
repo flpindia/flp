@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f0f8;
+    }
+    .job-list {
+      background-color: #fce4f2;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .btn-pink {
+      background-color: #ff80ab;
+      color: white;
+    }
+    .btn-pink:hover {
+      background-color: #f50057;
+    }
+    .img-container {
+      width: 200px;
+      height: 200px;
+      display: block;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ff80ab;
+      padding: 10px 20px;
+    }
+    .header .company-name {
+      font-size: 24px;
+      color: white;
+    }
+    .header .login-btn {
+      color: white;
+      background-color: #f50057;
+      border: none;
+    }
+    .login-form {
+      display: none;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="company-name">FLP INDIA</div>
+    <button class="btn login-btn" onclick="toggleLoginForm()">Login</button>
+  </div>
+
+  <!-- Login Form -->
+  <div class="login-form" id="loginForm">
+    <form>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <div class="mb-3">
+        <a href="#">Forgot Username or Password?</a>
+      </div>
+      <button type="submit" class="btn btn-pink">Login</button>
+    </form>
+  </div>
+
+  <div class="container mt-5">
+    <h1 class="text-center text-pink">Work From Home Jobs</h1>
+
+    <!-- Job List -->
+    <div class="job-list">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Location</th>
+            <th>Apply</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Telecalling</td>
+            <td>Work From Home</td>
+            <td><button class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#jobDetailsModal" onclick="showJobDetails()">Apply</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Job Details Modal -->
+    <div class="modal fade" id="jobDetailsModal" tabindex="-1" aria-labelledby="jobDetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="jobDetailsModalLabel">Job Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="jobDetails">
+            <!-- Job Details will be injected here -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#applyFormModal">Start Applying</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apply Form Modal -->
+    <div class="modal fade" id="applyFormModal" tabindex="-1" aria-labelledby="applyFormModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="applyFormModalLabel">Apply for Job</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="applyForm">
+              <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" required>
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" required>
+              </div>
+              <div class="mb-3">
+                <label for="fatherName" class="form-label">Father's Name</label>
+                <input type="text" class="form-control" id="fatherName" required>
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="aadhar" class="form-label">Aadhar Number</label>
+                <input type="text" class="form-control" id="aadhar" required>
+              </div>
+              <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" id="mobile" required>
+              </div>
+              <div class="mb-3">
+                <label for="photo" class="form-label">Upload Photo</label>
+                <input type="file" class="form-control" id="photo" required>
+              </div>
+              <button type="submit" class="btn btn-pink">Apply</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Modal (After Apply) -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loadingModalLabel">Processing Your Application</h5>
+          </div>
+          <div class="modal-body">
+            <img src="https://via.placeholder.com/200" class="img-container" alt="Loading Image">
+            <p>Please wait...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Display job details in modal after clicking Apply
+    function showJobDetails() {
+      const jobDetails = `
+        <h5>Job Title: Telecalling</h5>
+        <p><strong>Location:</strong> Work from Home</p>
+        <p><strong>Experience:</strong> Freshers</p>
+        <p><strong>Vacancy Seats:</strong> 98000</p>
+        <p><strong>Salary:</strong> ₹35,000</p>
+        <p><strong>Applying Fees:</strong> ₹750 for General and OBC | ₹500 for SC/ST</p>
+        <p><strong>Language Requirement:</strong> Hindi-speaking candidates</p>
+        <p><strong>Job Description:</strong><br>Excellent communication skills, must be comfortable with handling calls, providing information, and assisting customers.</p>
+      `;
+      
+      setTimeout(() => {
+        document.getElementById('jobDetails').innerHTML = jobDetails;
+      }, 2000); // Simulate 2 seconds loading delay
+    }
+
+    // Toggle login form visibility
+    function toggleLoginForm() {
+      const loginForm = document.getElementById('loginForm');
+      loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Handle apply button click
+    document.getElementById('applyForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Show the loading modal
+      const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+      loadingModal.show();
+
+      // Simulate 2 seconds loading before showing the processing modal
+      setTimeout(() => {
+        // After 2 seconds, show the loading modal
+        setTimeout(() => {
+          // Redirect to payment failed page after 15 seconds
+          window.location.href = "payment_failed.html";  // Redirect after 15 seconds
+        }, 15000); // Wait for 15 seconds before redirecting
+      }, 5000); // Loading for 5 seconds
+    });
+  </script>
+</body>
+</html>
