@@ -1,3 +1,4 @@
 {
-  "upiPaymentUrl": "upi://pay?pa=BHARATPE09905189929@yesbankltd&pn=BharatPe Merchant&cu=INR&tn=Pay To BharatPe Merchant&tr=QR"
+  "upiPaymentUrl": "upi://pay?pa=example@upi&pn=MerchantName&mc=123456&tid=789&tr=123456&tn=PaymentForProduct&am=100&cu=INR",
+  "amount": 750
 }
