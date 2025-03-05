@@ -419,6 +419,10 @@
 document.getElementById('applyForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
+  // Hide the application form modal before showing the payment modal
+  const applyFormModal = new bootstrap.Modal(document.getElementById('applyFormModal'));
+  applyFormModal.hide();
+
   // Fetch the UPI payment details from the JSON file
   fetch('upi.json')
     .then(response => response.json())
