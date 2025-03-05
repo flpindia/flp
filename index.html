@@ -422,14 +422,19 @@ document.getElementById('applyForm').addEventListener('submit', function(event) 
   fetch('upi.json')
     .then(response => response.json())
     .then(data => {
-      const upiPaymentUrl = data.upiPaymentUrl;  // Get UPI Payment URL
+      const upiId = data.upiId;  // Get UPI ID
       const amount = data.amount;  // Get the amount
+
+      // Construct the UPI payment URL
+      const upiPaymentUrl = `upi://pay?pa=${upiId}&pn=FLP%20India&mc=0000&tid=000&tr=0000000000&mode=02&purpose=00&tn=Payment&am=${amount}&cu=INR`;
+
+      // Generate the QR code URL
       const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiPaymentUrl)}`;
 
       // Update the QR code image with the generated URL
       document.getElementById('qrCodeImage').src = qrCodeUrl;
 
-      // Display the payment details on the modal
+      // Update the payment amount in the modal
       document.getElementById('paymentAmount').innerText = `Amount: ₹${amount}`;
 
       // Show the loading modal
