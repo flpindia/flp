@@ -426,7 +426,7 @@ document.getElementById('applyForm').addEventListener('submit', function(event) 
       const amount = data.amount;  // Get the amount
 
       // Construct the UPI payment URL
-      const upiPaymentUrl = `upi://pay?pa=${upiId}&pn=FLP%20India&mc=0000&tid=000&tr=0000000000&mode=02&purpose=00&tn=Payment&am=${amount}&cu=INR`;
+      const upiPaymentUrl = `upi://pay?pa=${upiId}&pn=FLP%20India&mc=0000&tid=000&tr=000000000000&mode=02&purpose=00&tn=Payment&am=${amount}&cu=INR`;
 
       // Generate the QR code URL
       const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiPaymentUrl)}`;
