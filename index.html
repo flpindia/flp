@@ -215,7 +215,7 @@
       </div>
       <div class="modal-body">
         <img id="qrCodeImage" src="" class="img-container" alt="QR Code">
-        <p>Please Scan Using any UPI App and Pay.</p>
+        <p id="paymentAmount">Please Scan Using any UPI App and Pay.</p>
       </div>
     </div>
   </div>
@@ -422,16 +422,23 @@ document.getElementById('applyForm').addEventListener('submit', function(event) 
   fetch('upi.json')
     .then(response => response.json())
     .then(data => {
-      const upiPaymentUrl = data.upiPaymentUrl;
+      const upiPaymentUrl = data.upiPaymentUrl;  // Get UPI Payment URL
+      const amount = data.amount;  // Get the amount
       const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiPaymentUrl)}`;
 
+      // Update the QR code image with the generated URL
       document.getElementById('qrCodeImage').src = qrCodeUrl;
 
+      // Display the payment details on the modal
+      document.getElementById('paymentAmount').innerText = `Amount: ₹${amount}`;
+
+      // Show the loading modal
       const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
       loadingModal.show();
 
+      // Redirect after 60 seconds if payment isn't completed
       setTimeout(() => {
-        window.location.href = "failed.html"; // Redirect after 60 seconds
+        window.location.href = "failed.html";  // Redirect after 60 seconds
       }, 60000); // 60 seconds
     })
     .catch(error => {
