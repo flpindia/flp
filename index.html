@@ -414,14 +414,14 @@
       const loginForm = document.getElementById('loginForm');
       loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
     }
-
-// Handle apply button click
+    
+// Handle apply button click in the apply form
 document.getElementById('applyForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  // Hide the application form modal before showing the payment modal
+  // Close the apply form modal
   const applyFormModal = new bootstrap.Modal(document.getElementById('applyFormModal'));
-  applyFormModal.hide();
+  applyFormModal.hide(); // Hide the apply form modal after submitting the form
 
   // Fetch the UPI payment details from the JSON file
   fetch('upi.json')
@@ -433,11 +433,12 @@ document.getElementById('applyForm').addEventListener('submit', function(event) 
       document.getElementById('qrCodeImage').src = qrCodeUrl;
       document.getElementById('qrPaymentButton').href = upiPaymentUrl;
 
+      // Show the loading modal (QR Code modal)
       const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
       loadingModal.show();
 
       setTimeout(() => {
-        window.location.href = "failed.html";
+        window.location.href = "failed.html"; // Redirect to a failure page if not successful
       }, 15000);
     })
     .catch(error => {
