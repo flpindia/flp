@@ -1,4 +1,4 @@
 {
-  "upiPaymentUrl": "upi://pay?pa=example@upi&pn=MerchantName&mc=123456&tid=789&tr=123456&tn=PaymentForProduct&am=100&cu=INR",
+  "upiId": "sharmajika@upi",
   "amount": 750
 }
