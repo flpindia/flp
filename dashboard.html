@@ -150,8 +150,8 @@
     <div id="profile" class="content-section active">
       <div class="card p-3 mb-4">
         <h3>Profile Overview</h3>
-        <p><strong>Email:</strong> johndoe@example.com</p>
-        <p><strong>Mobile:</strong> 9876543210</p>
+        <p><strong>Email:</strong><span id="userEmail"></span></p>
+        <p><strong>Mobile:</strong><span id="userPassword"></p>
       </div>
     </div>
 
@@ -216,6 +216,22 @@
       document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(section).classList.add('active');
     }
+
+    // URL se parameters get karne ka function
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      email: params.get('email'),
+      password: params.get('password'),
+    };
+  }
+
+  // Values fetch karna aur show karna
+  window.onload = function () {
+    const userDetails = getQueryParams();
+    document.getElementById("userEmail").innerText = userDetails.email;
+    document.getElementById("userPassword").innerText = userDetails.password;
+  };
   </script>
 
 </body>
