@@ -258,6 +258,17 @@
     document.getElementById("userEmail").innerText = userDetails.email;
     document.getElementById("userPassword").innerText = userDetails.password;
   };
+
+    document.getElementById("supportForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Form submit hone se roke
+
+    // Modal ko close karna
+    var modal = bootstrap.Modal.getInstance(document.getElementById('supportModal'));
+    modal.hide();
+
+    // (Optional) Form fields clear karna
+    document.getElementById("supportForm").reset();
+  });
   </script>
 
 </body>
