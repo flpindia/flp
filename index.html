@@ -482,6 +482,25 @@ document.getElementById('applyForm').addEventListener('submit', function(event) 
       }
     }
   });
+
+  function loginUser(event) {
+    event.preventDefault(); // Form submit hone se rokna
+
+    // Email aur Password fetch karna
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // URL encode karna (taaki special characters issue na de)
+    const encodedEmail = encodeURIComponent(email);
+    const encodedPassword = encodeURIComponent(password);
+
+    // Redirect to dashboard.html with email and password in URL
+    window.location.href = `dashboard.html?email=${encodedEmail}&password=${encodedPassword}`;
+  }
+
+  // Login form ko submit hone par function call karna
+  document.querySelector(".login-form form").addEventListener("submit", loginUser);
+  
   </script>
 </body>
 </html>
